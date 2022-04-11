@@ -10,7 +10,7 @@ Run the following command in Magento 2 root directory to install Navigate_Delete
 #### Install
 
 ```
-composer require navigate/module-deleteorders
+composer require navigate/module-delete-orders
 php bin/magento setup:upgrade
 php bin/magento setup:static-content:deploy -f
 ```
@@ -18,7 +18,7 @@ php bin/magento setup:static-content:deploy -f
 #### Update
 
 ```
-composer update navigate/module-deleteorders
+composer update navigate/module-delete-orders
 php bin/magento setup:upgrade
 php bin/magento setup:static-content:deploy -f
 ```
