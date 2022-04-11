@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Navigate
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Navigate.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.navigatecommerce.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Navigate
+ * @package     Navigate_DeleteOrders
+ * @copyright   Copyright (c) Navigate (https://www.navigatecommerce.com/)
+ * @license     https://www.navigatecommerce.com/LICENSE.txt
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
+    <module name="Navigate_DeleteOrders" setup_version="1.0.0">
+        <sequence>
+            <module name="Magento_Sales"/>
+            <module name="Navigate_Core"/>
+        </sequence>
+    </module>
+</config>

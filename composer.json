@@ -1,0 +1,26 @@
+{
+  "name": "navigate/module-delete-orders",
+  "description": "Magento 2 Delete Orders extension",
+  "require": {
+    "navigate/module-core": "^1.0.0"
+  },
+  "type": "magento2-module",
+  "version": "1.0.0",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Navigate",
+      "email": "support@navigatecommerce.com",
+      "homepage": "https://www.navigatecommerce.com/",
+      "role": "Technical Support"
+    }
+  ],
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "Navigate\\DeleteOrders\\": ""
+    }
+  }
+}
