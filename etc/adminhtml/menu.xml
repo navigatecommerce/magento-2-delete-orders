@@ -24,6 +24,6 @@
     <menu>
         <add id="Navigate_DeleteOrders::main" title="Delete Order" translate="title" module="Navigate_DeleteOrders" parent="Navigate_Core::core" sortOrder="150" resource="Navigate_DeleteOrders::main"/>
 
-        <add id="Navigate_DeleteOrders::configuration" title="Configurations" module="Navigate_DeleteOrders" parent="Navigate_DeleteOrders::main" sortOrder="10" action="adminhtml/system_config/edit/section/delete_orders" resource="Navigate_DeleteOrders::configuration" target="_blank"/>
+        <add id="Navigate_DeleteOrders::configuration_menu" title="Configurations" module="Navigate_DeleteOrders" parent="Navigate_DeleteOrders::main" sortOrder="10" action="adminhtml/system_config/edit/section/delete_orders" resource="Navigate_DeleteOrders::configuration_menu" target="_blank"/>
     </menu>
 </config>

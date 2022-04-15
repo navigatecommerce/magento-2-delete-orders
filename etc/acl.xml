@@ -24,20 +24,14 @@
     <acl>
         <resources>
             <resource id="Magento_Backend::admin">
-                <resource id="Magento_Sales::sales">
-                    <resource id="Magento_Sales::sales_operation">
-                        <resource id="Magento_Sales::sales_order">
-                            <resource id="Magento_Sales::actions">
-                                <resource id="Magento_Sales::delete" title="Delete" translate="title" sortOrder="65"/>
-                            </resource>
-                        </resource>
-                    </resource>
+                <resource id="Navigate_Core::core" title="Navigate menu">
+                    <resource id="Navigate_DeleteOrders::configuration_menu" title="Delete Order" sortOrder="200"/>
                 </resource>
                 <resource id="Magento_Backend::stores">
                     <resource id="Magento_Backend::stores_settings">
                         <resource id="Magento_Config::config">
                             <resource id="Navigate_Core::config" title="Navigate Extension Settings" translate="title" sortOrder="100">
-                                  <resource id="Navigate_DeleteOrders::configuration" title="Delete Order" sortOrder="20" /> 
+                                <resource id="Navigate_DeleteOrders::configuration" title="Delete Order" sortOrder="20" /> 
                             </resource>
                         </resource>
                     </resource>   
