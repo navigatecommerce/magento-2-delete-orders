@@ -2,7 +2,8 @@
   "name": "navigate/module-delete-orders",
   "description": "Magento 2 Delete Orders extension",
   "require": {
-    "navigate/module-core": "^1.0.0"
+    "navigate/module-core": "^1.0.0",
+    "php": "~7.0.13|~7.1.0|~7.2.0|~7.3.0|~7.4.0|~8.0.0|~8.1.1"
   },
   "type": "magento2-module",
   "version": "1.0.0",
