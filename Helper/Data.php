@@ -1,39 +1,22 @@
 <?php
 /**
- * Navigate
- *
- * NOTICE OF LICENSE
- *
- * This source file is subject to the navigatecommerce.com license that is
- * available through the world-wide-web at this URL:
- * https://www.navigatecommerce.com/LICENSE.txt
- *
- * DISCLAIMER
- *
- * Do not edit or add to this file if you wish to upgrade this extension to newer
- * version in the future.
- *
- * @category    Navigate
+ * @author      Navigate Commerce
  * @package     Navigate_DeleteOrder
  * @copyright   Copyright (c) Navigate (https://www.navigatecommerce.com/)
- * @license     https://www.navigatecommerce.com/LICENSE.txt
+ * @license     https://www.navigatecommerce.com/end-user-license-agreement
  */
 
 namespace Navigate\DeleteOrders\Helper;
 
 use Magento\Framework\App\Helper\Context;
-use Magento\Framework\ObjectManagerInterface;
+use Magento\Framework\App\Helper\AbstractHelper;
 use Magento\Sales\Model\ResourceModel\OrderFactory;
-use Magento\Store\Model\StoreManagerInterface;
-use Navigate\DeleteOrders\Helper\AbstractData;
+use Magento\Store\Model\ScopeInterface;
+use Magento\Framework\App\Config\ScopeConfigInterface;
 
-/**
- * Class Data
- * @package Navigate\DeleteOrders\Helper
- */
-class Data extends AbstractData
+class Data extends AbstractHelper
 {
-    const CONFIG_MODULE_PATH = 'delete_orders';
+    protected const IS_ENABLE = 'delete_orders/general/enabled';
 
     /**
      * @var OrderFactory
@@ -41,25 +24,41 @@ class Data extends AbstractData
     private $orderResourceFactory;
 
     /**
+     * @var ScopeConfigInterface
+     */
+    protected $scopeConfig;
+
+    /**
      * Data constructor.
      * @param Context $context
-     * @param ObjectManagerInterface $objectManager
-     * @param StoreManagerInterface $storeManager
      * @param OrderFactory $orderResourceFactory
+     * @param ScopeConfigInterface $scopeConfig
      */
+
     public function __construct(
         Context $context,
-        ObjectManagerInterface $objectManager,
-        StoreManagerInterface $storeManager,
-        OrderFactory $orderResourceFactory
+        OrderFactory $orderResourceFactory,
+        ScopeConfigInterface $scopeConfig
     ) {
         $this->orderResourceFactory = $orderResourceFactory;
-
-        parent::__construct($context, $objectManager, $storeManager);
+        $this->scopeConfig  = $scopeConfig;
+        parent::__construct($context);
     }
 
     /**
-     * @param $orderId
+     * Return Module Status.
+     *
+     * @return bool
+     */
+    public function isEnabled()
+    {
+        return (bool) $this->scopeConfig->getValue(self::IS_ENABLE, ScopeInterface::SCOPE_STORE);
+    }
+
+    /**
+     * To delete order data using orderId.
+     *
+     * @param int $orderId
      */
     public function deleteRecord($orderId)
     {
@@ -84,7 +83,5 @@ class Data extends AbstractData
             $resource->getTable('sales_creditmemo_grid'),
             $connection->quoteInto('order_id = ?', $orderId)
         );
-
-        return;
     }
 }

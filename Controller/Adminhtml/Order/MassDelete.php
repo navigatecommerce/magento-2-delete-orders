@@ -1,22 +1,9 @@
 <?php
 /**
- * Navigate
- *
- * NOTICE OF LICENSE
- *
- * This source file is subject to the navigatecommerce.com license that is
- * available through the world-wide-web at this URL:
- * https://www.navigatecommerce.com/LICENSE.txt
- *
- * DISCLAIMER
- *
- * Do not edit or add to this file if you wish to upgrade this extension to newer
- * version in the future.
- *
- * @category    Navigate
+ * @author      Navigate Commerce
  * @package     Navigate_DeleteOrder
  * @copyright   Copyright (c) Navigate (https://www.navigatecommerce.com/)
- * @license     https://www.navigatecommerce.com/LICENSE.txt
+ * @license     https://www.navigatecommerce.com/end-user-license-agreement
  */
 
 namespace Navigate\DeleteOrders\Controller\Adminhtml\Order;
@@ -30,19 +17,8 @@ use Magento\Sales\Model\ResourceModel\Order\CollectionFactory;
 use Magento\Ui\Component\MassAction\Filter;
 use Navigate\DeleteOrders\Helper\Data as DataHelper;
 
-/**
- * Class MassDelete
- * @package Navigate\DeleteOrders\Controller\Adminhtml\Order
- */
 class MassDelete extends AbstractMassAction
 {
-    /**
-     * Authorization level of a basic admin session.
-     *
-     * @see _isAllowed()
-     */
-    const ADMIN_RESOURCE = 'Magento_Sales::delete';
-
     /**
      * @var OrderRepository
      */
@@ -55,6 +31,7 @@ class MassDelete extends AbstractMassAction
 
     /**
      * MassDelete constructor.
+     *
      * @param Context $context
      * @param Filter $filter
      * @param CollectionFactory $collectionFactory
@@ -76,8 +53,9 @@ class MassDelete extends AbstractMassAction
     }
 
     /**
+     * To delete selected order(s)
+     *
      * @param AbstractCollection $collection
-     * @return \Magento\Backend\Model\View\Result\Redirect|\Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\ResultInterface
      */
     protected function massAction(AbstractCollection $collection)
     {
@@ -94,7 +72,8 @@ class MassDelete extends AbstractMassAction
 
                     $deleted++;
                 } catch (\Exception $e) {
-                    $this->messageManager->addErrorMessage(__('Cannot delete order #%1. Please try again later.', $order->getIncrementId()));
+                    $errorMsg = __('Cannot delete order #%1. Please try again later.', $order->getIncrementId());
+                    $this->messageManager->addErrorMessage($errorMsg);
                 }
             }
             if ($deleted) {
